@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  sales-api:
+    build: ./sales-api
+    restart: always
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "pass"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    expose:
+      - 5432
+volumes:
+  db-data:
